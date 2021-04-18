@@ -1,0 +1,53 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: include prereqs
+      ansible.builtin.include_tasks: 
+        file: prereq.yml
+
+    - name: download k3s binary
+      ansible.builtin.get_url:
+        url: https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/k3s
+        checksum: sha256:https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/sha256sum-amd64.txt
+        dest: /usr/local/bin/k3s
+        owner: root
+        group: root
+        mode: 0755
+
+    - name: insert systemd file
+      ansible.builtin.template:
+        src: files/k3s.service
+        dest: /etc/systemd/system/k3s.service
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: enable service
+      ansible.builtin.systemd:
+        name: k3s
+        daemon_reload: yes
+        state: restarted
+        enabled: yes   
+
+    - name: setup operator
+      block:
+        - name: download and install operator
+          ansible.builtin.command: "k3s kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/{{ awx_operator_version }}/deploy/awx-operator.yaml"
+
+    - name: insert awx file
+      ansible.builtin.template:
+        src: templates/awx.yml.j2
+        dest: /tmp/awx.yml
+
+    - name: start awx
+      ansible.builtin.command: "k3s kubectl apply -f /tmp/awx.yml"
+
+    - name: Print message
+      ansible.builtin.debug:
+        msg: 
+          - "Please wait 5-10 minutes until AWX is up and running"
+          - "Hostname: {{ tower_hostname }} (remember to fix your own dns/hosts file)"
+          - "Username: {{ awx_admin_user }}"
+          - "Password: {{ awx_admin_password }}"
+...
