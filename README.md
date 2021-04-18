@@ -42,7 +42,7 @@ awx-b5f6cf4d4-dmbm8   4/4     Running   0          12m
 To enter the web interface you'll navigate to http://awx.k3s.test, to make this work please enter the following into your /etc/hosts file
 
 ```text
-192.168.52.152  awx.k3s.test
+192.168.55.150  awx.k3s.test
 ```
 
 ### Customization
