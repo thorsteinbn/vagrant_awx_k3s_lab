@@ -10,7 +10,7 @@ What you need to get started!
 
 - [Virtualbox](https://www.virtualbox.org/)
 - [Vagrant](http://vagrantup.com)
-- [ansible >=2.10](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+- [Ansible >=2.10](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 ## Use
 

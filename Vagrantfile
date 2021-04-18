@@ -4,7 +4,7 @@ Vagrant.configure(2) do |config|
     config.vm.define "k3s" do |k3s|
         k3s.vm.hostname = "k3s.test"
         k3s.vm.box = "centos/stream8"
-        k3s.vm.network "private_network", ip: "192.168.52.152"
+        k3s.vm.network "private_network", ip: "192.168.55.150"
         k3s.vm.provider :virtualbox do |vb|
             vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
             vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]

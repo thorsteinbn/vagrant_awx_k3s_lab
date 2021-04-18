@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/home/toffe/GIT/github/vagrant_awx_k3s_lab","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
