@@ -47,7 +47,7 @@
       ansible.builtin.debug:
         msg: 
           - "Please wait 5-10 minutes until AWX is up and running"
-          - "Hostname: {{ tower_hostname }} (remember to fix your own dns/hosts file)"
+          - "Hostname: {{ tower_hostname }} ( remember to fix your own dns/hosts file )"
           - "Username: {{ awx_admin_user }}"
           - "Password: {{ awx_admin_password }}"
 ...

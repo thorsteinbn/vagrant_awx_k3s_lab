@@ -17,19 +17,21 @@ What you need to get started!
 ### Starting the environment
 
 ```bash
-$ vagrant up
+vagrant up
 ```
 
 ### SSH to the k3s node
-```
-$ vagrant ssh k3s
+
+```bash
+vagrant ssh k3s
 ```
 
 ### Checking awx pod status
+
 Start by entering the k3s node via ssh, then
 
 ```bash
-[vagrant@k3s ~]$ sudo k3s kubectl get pods --namespace awx
+$ sudo k3s kubectl get pods --namespace awx
 NAME                  READY   STATUS    RESTARTS   AGE
 awx-postgres-0        1/1     Running   0          12m
 awx-b5f6cf4d4-dmbm8   4/4     Running   0          12m
@@ -38,7 +40,8 @@ awx-b5f6cf4d4-dmbm8   4/4     Running   0          12m
 ### Opening AWX Web interface
 
 To enter the web interface you'll navigate to http://awx.k3s.test, to make this work please enter the following into your /etc/hosts file
-```
+
+```text
 192.168.52.152  awx.k3s.test
 ```
 
