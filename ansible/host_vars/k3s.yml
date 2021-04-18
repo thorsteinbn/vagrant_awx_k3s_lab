@@ -3,3 +3,5 @@ awx_operator_version: 0.8.0
 tower_hostname: awx.k3s.test
 awx_admin_password: password
 awx_admin_user: admin
+awx_version: 19.0.0
+awx_ee_version: 0.1.1

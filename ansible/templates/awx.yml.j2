@@ -22,3 +22,7 @@ spec:
   tower_hostname: {{ tower_hostname }}
   tower_admin_password_secret: awx-admin-password
   tower_admin_user: {{ awx_admin_user }}
+  tower_image: quay.io/ansible/awx:{{ awx_version }}
+  tower_ee_images:
+    - name: AWX EE {{ awx_ee_version }}
+      image: quay.io/ansible/awx-ee:{{ awx_ee_version }}
