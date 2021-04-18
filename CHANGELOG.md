@@ -7,6 +7,7 @@
 - Changelog
 - Ability to set awx version to install
 - Ability to set awx-ee (execution engine) version to install
+- Updated readme with customization info
 
 ### Changed
 

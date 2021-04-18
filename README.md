@@ -45,6 +45,11 @@ To enter the web interface you'll navigate to http://awx.k3s.test, to make this 
 192.168.52.152  awx.k3s.test
 ```
 
+### Customization
+
+You can use variables found in ansible/host_vars/k3s.yml to easily change the default settings.
+It is also possible to change the file ansible/templates/awx.yml.j2 with settings from the [awx-operator](https://github.com/ansible/awx-operator)
+
 ## Author
 
 Author: Thorstein B. Nordby
