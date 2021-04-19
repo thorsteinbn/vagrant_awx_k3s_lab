@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.3] - 19/04/2021
+
+### Changed
+
+- moved away from using command in favor of community.kubernetes.k8s to apply config
+
 ## [0.0.2] - 18/04/2021
 
 ### Added
