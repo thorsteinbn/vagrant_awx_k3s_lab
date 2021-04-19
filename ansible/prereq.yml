@@ -52,4 +52,15 @@
     path: /etc/sudoers
     validate: 'visudo -cf %s'
   when: ansible_distribution in ['CentOS', 'Red Hat Enterprise Linux']
+# Borrowing from https://github.com/k3s-io/k3s-ansible ends here.
+
+- name: Install pip
+  ansible.builtin.yum:
+    name: python3-pip
+    state: present
+
+- name: Add required pip packages
+  ansible.builtin.pip:
+    name: openshift
+    state: present
 ...

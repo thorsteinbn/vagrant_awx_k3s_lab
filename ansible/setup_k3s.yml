@@ -30,18 +30,26 @@
         state: restarted
         enabled: yes   
 
-    - name: setup operator
+    - name: install awx operator
       block:
-        - name: download and install operator
-          ansible.builtin.command: "k3s kubectl apply -f https://raw.githubusercontent.com/ansible/awx-operator/{{ awx_operator_version }}/deploy/awx-operator.yaml"
+        - name: "Download operator - AWX {{ awx_operator_version }}"
+          ansible.builtin.get_url:
+            url: "https://raw.githubusercontent.com/ansible/awx-operator/{{ awx_operator_version }}/deploy/awx-operator.yaml"
+            dest: /tmp/awx-operator.yml
+            mode: 0600
+        
+        - name: "Apply operator - AWX - {{ awx_operator_version }}"
+          community.kubernetes.k8s:
+            namespace: default
+            state: present
+            src: /tmp/awx-operator.yml
+            kubeconfig: /etc/rancher/k3s/k3s.yaml
 
-    - name: insert awx file
-      ansible.builtin.template:
-        src: templates/awx.yml.j2
-        dest: /tmp/awx.yml
-
-    - name: start awx
-      ansible.builtin.command: "k3s kubectl apply -f /tmp/awx.yml"
+    - name: Apply awx kubernetes config file
+      community.kubernetes.k8s:
+        state: present
+        template: templates/awx.yml.j2
+        kubeconfig: /etc/rancher/k3s/k3s.yaml
 
     - name: Print message
       ansible.builtin.debug:
