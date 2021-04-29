@@ -1,4 +1,5 @@
 k3s_version: v1.20.6+k3s1
+k3s_selinux_url: https://github.com/k3s-io/k3s-selinux/releases/download/v0.3.stable.0/k3s-selinux-0.3-0.el8.noarch.rpm
 awx_operator_version: 0.8.0
 tower_hostname: awx.k3s.test
 awx_admin_password: password
