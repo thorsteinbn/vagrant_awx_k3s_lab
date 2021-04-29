@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4] - 29/04/2021
+
+### Changed
+
+- added selinux (k3s-selinux) package, to avoid disable selinux
+- cleaned up prereq.yml file
+
 ## [0.0.3] - 19/04/2021
 
 ### Changed
